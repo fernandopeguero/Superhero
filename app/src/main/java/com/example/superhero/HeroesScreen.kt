@@ -85,6 +85,14 @@ fun HeroList(heroes: List<Hero>, modifier: Modifier = Modifier) {
 
 }
 
+
+@Composable
+fun HeroApp() {
+
+    val heroes = HeroesRepository.heroes
+
+    HeroList(heroes = heroes)
+}
 @Preview(showBackground = true)
 @Composable
 fun PreviewHeroApp() {
