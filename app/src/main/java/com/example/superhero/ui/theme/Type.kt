@@ -14,24 +14,24 @@ val Cabin = FontFamily(
 )
 // Set of Material typography styles to start with
 val Typography = Typography(
-    bodyLarge = TextStyle(
+    bodyMedium = TextStyle(
         fontFamily = Cabin,
         fontWeight = FontWeight.Normal,
         fontSize = 16.sp,
         lineHeight = 24.sp,
         letterSpacing = 0.5.sp
     ),
-    displayLarge = TextStyle(
+    titleLarge = TextStyle(
         fontFamily = Cabin,
         fontWeight = FontWeight.Normal,
         fontSize = 30.sp
     ),
-    displayMedium = TextStyle(
+    titleMedium = TextStyle(
         fontFamily = Cabin,
         fontWeight = FontWeight.Bold,
         fontSize = 20.sp
     ),
-    displaySmall = TextStyle(
+    titleSmall = TextStyle(
         fontFamily = Cabin,
         fontWeight = FontWeight.Bold,
         fontSize = 20.sp
