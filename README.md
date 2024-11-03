@@ -12,3 +12,8 @@ Features
 - **Scaffold Layout**: Utilizes the Scaffold component to manage the app's layout, including a top bar and structured content area.
 - **Responsive Design**: The layout is optimized for various screen sizes, ensuring a great experience on both mobile and tablet devices.
 - **Accessibility**: Each superhero profile is accessible, with descriptive images and labels for enhanced usability.
+
+<br/>
+
+![Screenshot 2024-11-03 000635](https://github.com/user-attachments/assets/40968025-d32f-4f25-ab46-78169b5bdf2f)
+
