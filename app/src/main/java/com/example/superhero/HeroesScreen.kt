@@ -28,6 +28,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.superhero.model.Hero
 import com.example.superhero.model.HeroesRepository
+import com.example.superhero.ui.theme.SuperheroTheme
 
 
 @Composable
@@ -46,7 +47,7 @@ fun HeroCard(hero: Hero, modifier: Modifier = Modifier) {
             Column(modifier = Modifier.weight(1f)) {
                 Text(
                     text = stringResource(hero.nameRes),
-                    style = MaterialTheme.typography.titleLarge
+                    style = MaterialTheme.typography.titleMedium
                 )
                 Text(
                     text = stringResource(hero.descriptionRes),
@@ -86,9 +87,23 @@ fun HeroList(heroes: List<Hero>, modifier: Modifier = Modifier) {
 
 @Preview(showBackground = true)
 @Composable
-fun PreviewHeroCard() {
+fun PreviewHeroApp() {
 
-    val heroes = HeroesRepository.heroes
+    SuperheroTheme(darkTheme = false) {
+        val heroes = HeroesRepository.heroes
 
-    HeroList(heroes = heroes)
+        HeroList(heroes = heroes)
+    }
+
+}
+
+@Preview(showBackground = true)
+@Composable
+fun PreviewDarkHeroApp() {
+    SuperheroTheme(darkTheme = true) {
+        val heroes = HeroesRepository.heroes
+
+        HeroList(heroes = heroes)
+    }
+
 }
