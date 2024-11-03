@@ -15,8 +15,11 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -24,6 +27,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.superhero.model.Hero
@@ -77,7 +81,7 @@ fun HeroCard(hero: Hero, modifier: Modifier = Modifier) {
 @Composable
 fun HeroList(heroes: List<Hero>, modifier: Modifier = Modifier) {
 
-    LazyColumn {
+    LazyColumn (modifier = modifier){
         items(heroes) { hero ->
             HeroCard(hero = hero, modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp))
         }
@@ -86,21 +90,36 @@ fun HeroList(heroes: List<Hero>, modifier: Modifier = Modifier) {
 }
 
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun HeroApp() {
+fun HeroApp(modifier: Modifier) {
 
     val heroes = HeroesRepository.heroes
 
-    HeroList(heroes = heroes)
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                title = {
+                    Text(
+                        text = stringResource(id = R.string.app_name),
+                        textAlign = TextAlign.Center,
+                        modifier = Modifier.fillMaxWidth()
+                    )
+                })
+        },
+        modifier = modifier
+    ) { innerPadding ->
+        HeroList(heroes = heroes, modifier = Modifier.padding(innerPadding))
+    }
+
+
 }
 @Preview(showBackground = true)
 @Composable
 fun PreviewHeroApp() {
 
     SuperheroTheme(darkTheme = false) {
-        val heroes = HeroesRepository.heroes
-
-        HeroList(heroes = heroes)
+        HeroApp(modifier = Modifier)
     }
 
 }
@@ -109,9 +128,7 @@ fun PreviewHeroApp() {
 @Composable
 fun PreviewDarkHeroApp() {
     SuperheroTheme(darkTheme = true) {
-        val heroes = HeroesRepository.heroes
-
-        HeroList(heroes = heroes)
+        HeroApp(modifier = Modifier)
     }
 
 }
